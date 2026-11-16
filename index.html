@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Youssef Mahmoud - Web Developer Portfolio">
+<title>YOUSSEF MAHMOUD | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#d9ad55;--bg:#080808;--card:#131313;--muted:#aaa}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#fff;font-family:Cairo,sans-serif;overflow-x:hidden}
+body.en{font-family:Outfit,sans-serif}
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer}
+.container{width:min(1120px,90%);margin:auto}
+header{position:fixed;top:0;width:100%;z-index:10;background:#080808eF;backdrop-filter:blur(14px);border-bottom:1px solid #ffffff15}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font:800 23px Outfit}.logo span{color:var(--gold)}
+nav{display:flex;gap:22px}
+nav a{font-size:13px;color:#ddd}
+nav a:hover{color:var(--gold)}
+.actions{display:flex;gap:8px}
+.small{background:#191919;color:white;border:1px solid #444;padding:7px 12px;border-radius:8px}
+.menu{display:none}
+.hero{min-height:100vh;display:flex;align-items:center;padding:110px 0 60px;position:relative}
+.hero:before{content:"";position:absolute;width:450px;height:450px;right:-200px;top:10%;background:#d9ad5520;filter:blur(100px);border-radius:50%}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.tag{color:var(--gold);border:1px solid #d9ad5560;padding:8px 15px;border-radius:30px;display:inline-block;margin-bottom:20px;font-size:13px}
+h1{font-size:clamp(38px,6vw,68px);line-height:1.25;margin-bottom:15px}
+h1 span{color:var(--gold)}
+.hero p,.panel p{color:var(--muted);line-height:2}
+.buttons{display:flex;gap:12px;margin-top:25px;flex-wrap:wrap}
+.btn{padding:12px 23px;border-radius:9px;border:1px solid var(--gold);font-weight:700;display:inline-block;transition:.3s}
+.btn.primary{background:var(--gold);color:#111}
+.btn.secondary{color:var(--gold)}
+.btn:hover{transform:translateY(-4px)}
+.avatar-wrap{display:flex;justify-content:center}
+.avatar{width:270px;height:270px;border-radius:50%;border:2px solid var(--gold);background:radial-gradient(circle,#382c17,#111 70%);display:flex;flex-direction:column;justify-content:center;align-items:center;box-shadow:0 0 70px #d9ad5520;position:relative}
+.avatar:after{content:"";position:absolute;inset:-13px;border:1px dashed #d9ad5580;border-radius:50%;animation:spin 24s linear infinite}
+.avatar strong{font:800 85px Outfit;color:var(--gold)}
+.avatar small{font:700 12px Outfit;letter-spacing:3px}
+@keyframes spin{to{transform:rotate(360deg)}}
+section{padding:90px 0}
+.heading{text-align:center;margin-bottom:40px}
+.eyebrow{color:var(--gold);letter-spacing:2px;font-size:12px}
+.heading h2{font-size:35px;margin:7px 0}
+.heading p{font-size:13px;color:var(--muted)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.panel,.card{background:var(--card);border:1px solid #ffffff15;border-radius:15px;padding:25px}
+.panel h3{font-size:23px;margin-bottom:12px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{background:#181818;border:1px solid #ffffff12;border-radius:12px;text-align:center;padding:20px}
+.stat b{display:block;color:var(--gold);font:800 28px Outfit}
+.stat span{font-size:12px;color:#aaa}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.card{transition:.3s}
+.card:hover{transform:translateY(-6px);border-color:#d9ad5570}
+.symbol{font-size:30px;color:var(--gold);margin-bottom:10px}
+.card h3{font-size:18px;margin-bottom:8px}
+.card p{font-size:13px;color:#aaa;line-height:1.9}
+.project-image{width:100%;height:165px;object-fit:cover;border-radius:10px;margin-bottom:12px}
+.skills{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.skill{background:#181818;border:1px solid #444;border-radius:30px;padding:10px 18px;font-size:13px}
+.gallery{overflow:hidden}
+.track{display:flex;direction:ltr;transition:transform .5s}
+.gallery-item{flex:0 0 33.333%;min-width:33.333%;padding:8px}
+.gallery-item img{width:100%;height:210px;object-fit:cover;border-radius:12px;cursor:zoom-in}
+.controls{display:flex;justify-content:center;align-items:center;gap:20px;margin-top:18px}
+.controls button{width:40px;height:40px;border-radius:50%;background:#191919;color:var(--gold);border:1px solid #444;font-size:22px}
+#galleryCount{font-family:Outfit;color:#aaa}
+.note{text-align:center;color:#999;font-size:12px;margin-top:-25px;margin-bottom:25px}
+.quote{font-size:30px;color:var(--gold)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.contact-item{background:#151515;border:1px solid #ffffff15;border-radius:12px;padding:20px}
+.contact-item span{display:block;color:var(--gold);font-size:12px}
+.contact-item b{display:block;margin:5px 0}
+.contact-item a{color:var(--gold);font-size:13px}
+footer{text-align:center;padding:25px;border-top:1px solid #ffffff15;color:#999;font-size:13px}
+footer strong{color:var(--gold)}
+.reveal{opacity:0;transform:translateY(22px);transition:.7s}
+.reveal.active{opacity:1;transform:none}
+#zoom{display:none;position:fixed;inset:0;background:#000e;z-index:50;align-items:center;justify-content:center;padding:20px}
+#zoom.show{display:flex}
+#zoom img{max-width:95%;max-height:85vh;border-radius:12px}
+#zoom button{position:absolute;top:18px;left:20px;background:#222;color:white;border:0;border-radius:50%;width:42px;height:42px;font-size:25px}
+.visitor{position:fixed;bottom:12px;left:12px;z-index:5;background:#181818;border:1px solid #d9ad5570;border-radius:30px;padding:8px 13px;font-size:11px;color:#ddd}
+.visitor b{color:var(--gold)}
+@media(max-width:800px){
+ nav{display:none;position:absolute;top:72px;right:0;width:100%;background:#111;padding:20px;flex-direction:column;text-align:center}
+ nav.open{display:flex}
+ .menu{display:block}
+ .hero{text-align:center}
+ .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+ .hero p{margin:auto}
+ .buttons{justify-content:center}
+ .avatar{width:210px;height:210px}
+ .avatar strong{font-size:70px}
+ .cards{grid-template-columns:repeat(2,1fr)}
+ .gallery-item{flex-basis:100%;min-width:100%}
+}
+@media(max-width:480px){.cards{grid-template-columns:1fr}.heading h2{font-size:29px}}
+</style>
+</head>
+<body>
+<header>
+<div class="container nav">
+<a class="logo" href="#home">YOUSSEF<span>.</span></a>
+<nav id="nav">
+<a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+<a href="#about" data-ar="من أنا" data-en="About">من أنا</a>
+<a href="#services" data-ar="خدماتي" data-en="Services">خدماتي</a>
+<a href="#projects" data-ar="مشاريعي" data-en="Projects">مشاريعي</a>
+<a href="#contact" data-ar="تواصل" data-en="Contact">تواصل</a>
+</nav>
+<div class="actions"><button class="small" onclick="changeLang()" id="langBtn">EN</button><button class="small menu" onclick="toggleMenu()">☰</button></div>
+</div>
+</header>
+<main>
+<section class="hero" id="home">
+<div class="container hero-grid">
+<div class="reveal">
+<span class="tag" data-ar="مرحباً بك في موقعي الشخصي" data-en="WELCOME TO MY PORTFOLIO">مرحباً بك في موقعي الشخصي</span>
+<h1><span data-ar="أنا يوسف محمود" data-en="I'm Youssef">أنا يوسف محمود</span><br><span>Web Developer</span></h1>
+<p data-ar="مهتم بتصميم وتطوير مواقع الويب، وأسعى دائماً لتقديم تجارب رقمية مميزة بتصميم عصري وأداء سريع." data-en="I'm passionate about web design and development, creating modern digital experiences with clean design and smooth performance.">مهتم بتصميم وتطوير مواقع الويب، وأسعى دائماً لتقديم تجارب رقمية مميزة بتصميم عصري وأداء سريع.</p>
+<div class="buttons"><a class="btn primary" href="#projects" data-ar="شاهد أعمالي" data-en="View My Work">شاهد أعمالي</a><a class="btn secondary" href="#contact" data-ar="تواصل معي" data-en="Contact Me">تواصل معي</a></div>
+</div>
+<div class="avatar-wrap reveal"><div class="avatar"><strong>YM</strong><small>YOUSSEF MAHMOUD</small></div></div>
+</div>
+</section>
+<section id="about">
+<div class="container">
+<div class="heading reveal"><span class="eyebrow">ABOUT ME</span><h2 data-ar="من أنا؟" data-en="Who Am I?">من أنا؟</h2><p data-ar="تعرف على رحلتي في عالم تصميم المواقع" data-en="A little about my web development journey">تعرف على رحلتي في عالم تصميم المواقع</p></div>
+<div class="about-grid">
+<div class="panel reveal"><h3 data-ar="يوسف محمود" data-en="Youssef Mahmoud">يوسف محمود</h3><p data-ar="أنا مهتم بمجال البرمجة وتصميم مواقع الويب. أحب تعلم التقنيات الجديدة وتحويل الأفكار إلى مواقع إلكترونية سهلة الاستخدام وجذابة. أعمل باستمرار على تطوير مهاراتي وبناء مشاريع جديدة." data-en="I'm interested in programming and web design. I enjoy learning new technologies and turning ideas into attractive, user-friendly websites. I'm always working to improve my skills and build new projects.">أنا مهتم بمجال البرمجة وتصميم مواقع الويب. أحب تعلم التقنيات الجديدة وتحويل الأفكار إلى مواقع إلكترونية سهلة الاستخدام وجذابة. أعمل باستمرار على تطوير مهاراتي وبناء مشاريع جديدة.</p></div>
+<div class="stats reveal">
+<div class="stat"><b>HTML</b><span data-ar="بناء صفحات الويب" data-en="Web Structure">بناء صفحات الويب</span></div>
+<div class="stat"><b>CSS</b><span data-ar="التصميم والتنسيق" data-en="Web Styling">التصميم والتنسيق</span></div>
+<div class="stat"><b>JS</b><span data-ar="التفاعل والوظائف" data-en="Interactions">التفاعل والوظائف</span></div>
+<div class="stat"><b>∞</b><span data-ar="تعلم مستمر" data-en="Always Learning">تعلم مستمر</span></div>
+</div>
+</div>
+</div>
+</section>
+<section id="services">
+<div class="container">
+<div class="heading reveal"><span class="eyebrow">MY SERVICES</span><h2 data-ar="خدماتي" data-en="My Services">خدماتي</h2></div>
+<div class="cards">
+<div class="card reveal"><div class="symbol">✦</div><h3 data-ar="تصميم مواقع" data-en="Web Design">تصميم مواقع</h3><p data-ar="تصميم واجهات عصرية وأنيقة تناسب نشاطك التجاري." data-en="Modern and elegant interfaces for your business.">تصميم واجهات عصرية وأنيقة تناسب نشاطك التجاري.</p></div>
+<div class="card reveal"><div class="symbol">⌘</div><h3 data-ar="تطوير المواقع" data-en="Web Development">تطوير المواقع</h3><p data-ar="إنشاء صفحات ويب تفاعلية وسهلة الاستخدام." data-en="Building interactive and user-friendly web pages.">إنشاء صفحات ويب تفاعلية وسهلة الاستخدام.</p></div>
+<div class="card reveal"><div class="symbol">▣</div><h3 data-ar="تصميم متجاوب" data-en="Responsive Design">تصميم متجاوب</h3><p data-ar="مواقع تعمل بشكل جيد على الموبايل والكمبيوتر." data-en="Websites that work on phones and computers.">مواقع تعمل بشكل جيد على الموبايل والكمبيوتر.</p></div>
+</div>
+</div>
+</section>
+<section id="skills">
+<div class="container"><div class="heading reveal"><span class="eyebrow">MY SKILLS</span><h2 data-ar="مهاراتي" data-en="My Skills">مهاراتي</h2></div>
+<div class="skills reveal"><span class="skill">HTML5</span><span class="skill">CSS3</span><span class="skill">JavaScript</span><span class="skill">Responsive Design</span><span class="skill">UI Design</span><span class="skill">Web Development</span></div></div>
+</section>
+<section id="projects">
+<div class="container">
+<div class="heading reveal"><span class="eyebrow">MY PROJECTS</span><h2 data-ar="مشاريعي" data-en="Selected Projects">مشاريعي</h2><p data-ar="نماذج لمشاريع ومجالات أعمل عليها" data-en="A selection of project concepts">نماذج لمشاريع ومجالات أعمل عليها</p></div>
+<div class="cards">
+<div class="card reveal"><img class="project-image" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=700" alt="Restaurant"><h3 data-ar="موقع مطعم" data-en="Restaurant Website">موقع مطعم</h3><p data-ar="تصميم موقع مطعم يعرض القائمة والخدمات." data-en="A restaurant website concept with menu and services.">تصميم موقع مطعم يعرض القائمة والخدمات.</p></div>
+<div class="card reveal"><img class="project-image" src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=700" alt="Coffee"><h3 data-ar="موقع كافيه" data-en="Coffee Shop Website">موقع كافيه</h3><p data-ar="موقع أنيق لمقهى مع عرض المنتجات." data-en="An elegant coffee shop website concept.">موقع أنيق لمقهى مع عرض المنتجات.</p></div>
+<div class="card reveal"><img class="project-image" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700" alt="Store"><h3 data-ar="متجر إلكتروني" data-en="E-Commerce Website">متجر إلكتروني</h3><p data-ar="واجهة متجر إلكتروني لعرض المنتجات." data-en="An online store interface for products.">واجهة متجر إلكتروني لعرض المنتجات.</p></div>
+<div class="card reveal"><img class="project-image" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700" alt="Business"><h3 data-ar="موقع أعمال" data-en="Business Website">موقع أعمال</h3><p data-ar="موقع تعريفي للشركات والخدمات." data-en="A business profile website concept.">موقع تعريفي للشركات والخدمات.</p></div>
+<div class="card reveal"><img class="project-image" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=700" alt="Portfolio"><h3 data-ar="معرض أعمال" data-en="Portfolio Website">معرض أعمال</h3><p data-ar="صفحة شخصية لعرض المهارات والمشاريع." data-en="A personal portfolio to showcase work.">صفحة شخصية لعرض المهارات والمشاريع.</p></div>
+<div class="card reveal"><img class="project-image" src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=700" alt="Creative"><h3 data-ar="موقع إبداعي" data-en="Creative Website">موقع إبداعي</h3><p data-ar="تصميم إبداعي بواجهة جذابة ومتجاوبة." data-en="A creative and responsive website concept.">تصميم إبداعي بواجهة جذابة ومتجاوبة.</p></div>
+</div>
+</div>
+</section>
+<section id="gallery">
+<div class="container">
+<div class="heading reveal"><span class="eyebrow">CREATIVE GALLERY</span><h2 data-ar="معرض الصور" data-en="Creative Gallery">معرض الصور</h2></div>
+<div class="gallery reveal"><div class="track" id="track">
+<div class="gallery-item"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900" alt="Gallery 1"></div>
+<div class="gallery-item"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900" alt="Gallery 2"></div>
+<div class="gallery-item"><img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=900" alt="Gallery 3"></div>
+<div class="gallery-item"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900" alt="Gallery 4"></div>
+<div class="gallery-item"><img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=900" alt="Gallery 5"></div>
+<div class="gallery-item"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900" alt="Gallery 6"></div>
+</div></div>
+<div class="controls"><button onclick="move(-1)">‹</button><span id="galleryCount">01 / 06</span><button onclick="move(1)">›</button></div>
+</div>
+</section>
+<section id="testimonials">
+<div class="container">
+<div class="heading reveal"><span class="eyebrow">TESTIMONIALS</span><h2 data-ar="آراء العملاء" data-en="Testimonials">آراء العملاء</h2></div>
+<p class="note" data-ar="أمثلة تجريبية للتصميم وليست تقييمات حقيقية." data-en="Sample placeholders, not real customer reviews.">أمثلة تجريبية للتصميم وليست تقييمات حقيقية.</p>
+<div class="cards">
+<div class="card reveal"><div class="quote">“</div><p data-ar="تصميم جميل ومنظم وتجربة ممتازة على الهاتف." data-en="A clean design and a great mobile experience.">تصميم جميل ومنظم وتجربة ممتازة على الهاتف.</p><h3>Customer One</h3></div>
+<div class="card reveal"><div class="quote">“</div><p data-ar="واجهة بسيطة وأنيقة وسهلة الاستخدام." data-en="A simple, elegant and easy-to-use interface.">واجهة بسيطة وأنيقة وسهلة الاستخدام.</p><h3>Customer Two</h3></div>
+<div class="card reveal"><div class="quote">“</div><p data-ar="اهتمام بالتفاصيل وشكل احترافي." data-en="Great attention to detail and a professional look.">اهتمام بالتفاصيل وشكل احترافي.</p><h3>Customer Three</h3></div>
+</div>
+</div>
+</section>
+<section id="contact">
+<div class="container">
+<div class="heading reveal"><span class="eyebrow">GET IN TOUCH</span><h2 data-ar="تواصل معي" data-en="Contact Me">تواصل معي</h2><p data-ar="هل لديك فكرة مشروع؟ يسعدني أن نتحدث عنها." data-en="Have a project idea? Let's talk about it.">هل لديك فكرة مشروع؟ يسعدني أن نتحدث عنها.</p></div>
+<div class="contact-grid reveal">
+<div class="contact-item"><span>WHATSAPP</span><b data-ar="تواصل عبر واتساب" data-en="Contact on WhatsApp">تواصل عبر واتساب</b><a href="https://wa.me/201000000000" target="_blank" rel="noopener">Open WhatsApp ↗</a></div>
+<div class="contact-item"><span>FACEBOOK</span><b data-ar="صفحة فيسبوك" data-en="Facebook Page">صفحة فيسبوك</b><a href="https://facebook.com/" target="_blank" rel="noopener">Facebook ↗</a></div>
+</div>
+</div>
+</section>
+</main>
+<footer>© 2026 <strong>YOUSSEF MAHMOUD</strong> — <span data-ar="جميع الحقوق محفوظة" data-en="All Rights Reserved">جميع الحقوق محفوظة</span></footer>
+<div class="visitor">👁 <span data-ar="زيارات هذا المتصفح:" data-en="This browser:">زيارات هذا المتصفح:</span> <b id="visits">0</b></div>
+<div id="zoom" onclick="closeZoom()"><button onclick="closeZoom()">×</button><img id="zoomImg" alt="Zoom"></div>
+<script>
+let lang="ar";
+function changeLang(){
+ lang=lang==="ar"?"en":"ar";
+ document.documentElement.lang=lang;
+ document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+ document.body.classList.toggle("en",lang==="en");
+ document.querySelectorAll("[data-ar]").forEach(el=>el.textContent=el.dataset[lang]);
+ document.getElementById("langBtn").textContent=lang==="ar"?"EN":"AR";
+}
+function toggleMenu(){document.getElementById("nav").classList.toggle("open")}
+document.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",()=>document.getElementById("nav").classList.remove("open")));
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("active");observer.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+const track=document.getElementById("track"),items=track.querySelectorAll(".gallery-item");
+let index=0;
+function visible(){return innerWidth<=800?1:3}
+function update(){
+ let max=Math.max(0,items.length-visible());
+ index=Math.min(index,max);
+ track.style.transform="translateX(-"+index*(100/visible())+"%)";
+ document.getElementById("galleryCount").textContent=String(index+1).padStart(2,"0")+" / 06";
+}
+function move(step){let max=Math.max(0,items.length-visible());index=(index+step+max+1)%(max+1);update()}
+addEventListener("resize",update);update();
+let timer=setInterval(()=>move(1),4000);
+document.querySelector(".gallery").addEventListener("mouseenter",()=>clearInterval(timer));
+document.querySelector(".gallery").addEventListener("mouseleave",()=>timer=setInterval(()=>move(1),4000));
+const zoom=document.getElementById("zoom"),zoomImg=document.getElementById("zoomImg");
+document.querySelectorAll(".gallery-item img").forEach(img=>img.addEventListener("click",()=>{zoomImg.src=img.src;zoom.classList.add("show")}));
+function closeZoom(){zoom.classList.remove("show")}
+zoomImg.addEventListener("click",e=>e.stopPropagation());
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeZoom()});
+let visits=Number(localStorage.getItem("ymVisits")||0)+1;
+localStorage.setItem("ymVisits",visits);
+document.getElementById("visits").textContent=visits;
+// Local browser counter only. Configure shared analytics after publishing.
+</script>
+</body>
+</html>
